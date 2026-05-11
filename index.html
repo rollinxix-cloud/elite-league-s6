@@ -7,13 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #050a18;
+            /* Dark Mode (Default eFootball Theme) */
+            --bg-color: #050a18;
             --card-bg: #0d162d;
+            --text-main: #ffffff;
+            --text-dim: #a0aec0;
             --primary-neon: #d2ff00; /* eFootball Lime */
-            --secondary-blue: #0046ff;
-            --text-white: #ffffff;
-            --text-gray: #a0aec0;
-            --accent-gradient: linear-gradient(135deg, #0046ff 0%, #d2ff00 100%);
+            --accent-blue: #0046ff;
+            --table-border: rgba(255, 255, 255, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #1a202c;
+            --text-dim: #4a5568;
+            --primary-neon: #0046ff; /* Blue becomes primary in light mode */
+            --accent-blue: #d2ff00;
+            --table-border: rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -23,26 +35,45 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 70, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(210, 255, 0, 0.05) 0%, transparent 40%);
-            color: var(--text-white);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Rajdhani', sans-serif;
+            transition: var(--transition);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
 
-        /* Header & Hero Section */
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--primary-neon);
+            color: var(--text-main);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+
+        /* Header */
         header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px 20px 40px;
             text-transform: uppercase;
         }
 
@@ -52,65 +83,53 @@
             font-weight: 700;
             letter-spacing: 4px;
             margin-bottom: 10px;
-            background: linear-gradient(to bottom, #fff 40%, var(--primary-neon));
+            background: linear-gradient(to bottom, var(--text-main) 40%, var(--primary-neon));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(210, 255, 0, 0.3));
         }
 
         .season-badge {
             display: inline-block;
             background: var(--primary-neon);
-            color: var(--bg-dark);
+            color: #000;
             padding: 5px 25px;
             font-weight: 800;
             border-radius: 50px;
             font-size: 1.2rem;
             transform: skewX(-15deg);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        /* Highlights Bar */
+        /* Highlights */
         .highlights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .highlight-card {
             background: var(--card-bg);
-            border-left: 4px solid var(--primary-neon);
-            padding: 25px;
+            border-bottom: 3px solid var(--primary-neon);
+            padding: 20px;
             border-radius: 8px;
             text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5deg);
-        }
-
-        .highlight-card h3 {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .highlight-card p {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary-neon);
         }
 
-        /* League Table Styling */
+        /* Table */
         .table-container {
             background: var(--card-bg);
             border-radius: 12px;
             overflow-x: auto;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 1px solid var(--table-border);
         }
 
         table {
@@ -119,159 +138,112 @@
             min-width: 800px;
         }
 
-        thead {
-            background: rgba(255,255,255,0.03);
+        th {
+            background: rgba(0,0,0,0.05);
+            padding: 20px 15px;
+            text-align: left;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             border-bottom: 2px solid var(--primary-neon);
         }
 
-        th {
-            padding: 20px 15px;
-            text-align: left;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            letter-spacing: 1px;
-        }
-
         td {
-            padding: 18px 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 15px;
+            border-bottom: 1px solid var(--table-border);
             font-weight: 600;
         }
 
-        tr:hover {
-            background: rgba(210, 255, 0, 0.03);
-        }
-
-        .player-name {
+        .player-link {
             color: var(--primary-neon);
             cursor: pointer;
             text-decoration: none;
-            transition: color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 700;
         }
 
-        .player-name:hover {
-            color: white;
-            text-decoration: underline;
-        }
+        .pts-cell { color: var(--primary-neon); font-size: 1.1rem; }
 
-        .pos-cell { width: 60px; text-align: center; font-weight: 800; color: var(--text-gray); }
-        .pts-cell { font-weight: 800; color: var(--primary-neon); font-size: 1.1rem; }
-
-        /* Form Indicators */
-        .form-dot {
-            height: 10px;
-            width: 10px;
-            background: #444;
-            display: inline-block;
-            border-radius: 50%;
-            margin-right: 4px;
-        }
-
-        /* Modal Styling */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            width: 90%;
-            max-width: 450px;
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid var(--primary-neon);
-            text-align: center;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--text-gray);
-        }
-
-        .modal-header h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary-neon);
-            margin-bottom: 20px;
-        }
-
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-label { color: var(--text-gray); }
-        .stat-value { font-weight: 700; color: white; }
-
-        /* CTA Button */
+        /* Button */
         .btn-register {
             display: block;
             width: fit-content;
-            margin: 40px auto;
+            margin: 50px auto;
             background: var(--primary-neon);
-            color: var(--bg-dark);
-            padding: 15px 40px;
+            color: #000;
+            padding: 18px 45px;
             font-weight: 800;
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 5px;
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(210, 255, 0, 0.4);
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(210, 255, 0, 0.2);
         }
 
         .btn-register:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(210, 255, 0, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(210, 255, 0, 0.5);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center; justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid var(--primary-neon);
+            width: 90%; max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute; top: 10px; right: 15px;
+            font-size: 1.5rem; cursor: pointer; color: var(--text-dim);
+        }
+
+        .form-dot {
+            height: 12px; width: 12px; background: #333;
+            display: inline-block; border-radius: 50%; margin: 0 2px;
         }
 
         @media (max-width: 600px) {
-            .highlights-grid { grid-template-columns: 1fr; }
-            .league-title { font-size: 2rem; }
+            .league-title { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <button class="theme-toggle" id="themeBtn" title="Toggle Light/Dark Mode">🌓</button>
+
         <header>
             <div class="season-badge">Season 6</div>
             <h1 class="league-title">ELITE LEAGUE</h1>
-            <p style="color: var(--text-gray); letter-spacing: 2px;">Professional eFootball Online Tournament</p>
+            <p style="color: var(--text-dim);">The Ultimate eFootball Championship</p>
         </header>
 
         <div class="highlights-grid">
             <div class="highlight-card">
-                <h3>ENTRY FEE</h3>
+                <small>ENTRY FEE</small>
                 <p>₹200</p>
             </div>
             <div class="highlight-card">
-                <h3>PRIZE POOL</h3>
-                <p>BIG PRIZE</p>
+                <small>FORMAT</small>
+                <p>9 MATCHES</p>
             </div>
             <div class="highlight-card">
-                <h3>FORMAT</h3>
-                <p>Round Robin</p>
+                <small>PRIZE</small>
+                <p>BIG POOL</p>
             </div>
         </div>
 
@@ -279,7 +251,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="pos-cell">#</th>
+                        <th>POS</th>
                         <th>PLAYER</th>
                         <th>P</th>
                         <th>W</th>
@@ -288,79 +260,70 @@
                         <th>GS</th>
                         <th>GC</th>
                         <th>GD</th>
-                        <th class="pts-cell">PTS</th>
+                        <th>PTS</th>
                     </tr>
                 </thead>
-                <tbody id="league-body">
-                    <!-- Table rows injected by JavaScript -->
-                </tbody>
+                <tbody id="leagueTableBody">
+                    </tbody>
             </table>
         </div>
 
-        <a href="#" class="btn-register">Register Now</a>
+        <a href="https://m.me/pesmatches5" target="_blank" class="btn-register">Register Now</a>
     </div>
 
-    <!-- Player Info Modal -->
     <div id="playerModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2 id="modalPlayerName">PLAYER INFO</h2>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">Previous Elite League Titles</span>
-                <span class="stat-value">None (Debut)</span>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">Current Form</span>
-                <span class="stat-value">
-                    <span class="form-dot"></span>
-                    <span class="form-dot"></span>
-                    <span class="form-dot"></span>
-                    <span class="form-dot"></span>
-                    <span class="form-dot"></span>
-                </span>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">Status</span>
-                <span class="stat-value" style="color: var(--primary-neon);">Awaiting Kickoff</span>
+            <span class="close">&times;</span>
+            <h2 id="modalName" style="font-family: 'Orbitron'; color: var(--primary-neon); margin-bottom: 20px;">PLAYER</h2>
+            <div style="text-align: left;">
+                <div style="display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid var(--table-border);">
+                    <span>Titles Won:</span>
+                    <span style="font-weight: 700;">0</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid var(--table-border);">
+                    <span>Recent Form:</span>
+                    <div>
+                        <span class="form-dot"></span><span class="form-dot"></span><span class="form-dot"></span><span class="form-dot"></span><span class="form-dot"></span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.9rem;">No matches played yet in Season 6.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Generate 10 Players with default values
-        const leagueBody = document.getElementById('league-body');
-        const modal = document.getElementById('playerModal');
-        const closeModal = document.querySelector('.close-modal');
-        const modalName = document.getElementById('modalPlayerName');
+        // Dark/Light Mode Toggle
+        const themeBtn = document.getElementById('themeBtn');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeBtn.innerText = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+        });
 
+        // Table Generation
+        const tableBody = document.getElementById('leagueTableBody');
         for (let i = 1; i <= 10; i++) {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="pos-cell">${i}</td>
-                <td><span class="player-name" onclick="showPlayer('Player ${i}')">TBD (Slot ${i})</span></td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${i}</td>
+                <td><span class="player-link" onclick="openModal('Slot ${i}')">TBD (Slot ${i})</span></td>
+                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
                 <td class="pts-cell">0</td>
             `;
-            leagueBody.appendChild(tr);
+            tableBody.appendChild(row);
         }
 
         // Modal Logic
-        function showPlayer(name) {
-            modalName.innerText = name;
-            modal.style.display = 'flex';
+        const modal = document.getElementById('playerModal');
+        const span = document.getElementsByClassName('close')[0];
+
+        function openModal(name) {
+            document.getElementById('modalName').innerText = name;
+            modal.style.display = "flex";
         }
 
-        closeModal.onclick = () => modal.style.display = 'none';
+        span.onclick = () => modal.style.display = "none";
         window.onclick = (event) => {
-            if (event.target == modal) modal.style.display = 'none';
+            if (event.target == modal) modal.style.display = "none";
         }
     </script>
 </body>
