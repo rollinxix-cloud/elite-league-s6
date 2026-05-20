@@ -270,10 +270,10 @@
         const players = [
             { name: "Basanta Tamang", titles: 0 },
             { name: "Binaya Shrestha", titles: 0 },
-            { name: "TBD (Slot 3)", titles: 0 },
-            { name: "TBD (Slot 4)", titles: 0 },
-            { name: "TBD (Slot 5)", titles: 0 },
-            { name: "TBD (Slot 6)", titles: 0 },
+            { name: "Siv Sunar", titles: 0 },
+            { name: "Subash Tamang", titles: 0 },
+            { name: "Prateek Khadka", titles: 4 },
+            { name: "Manees Paudel", titles: 0 },
             { name: "TBD (Slot 7)", titles: 0 },
             { name: "TBD (Slot 8)", titles: 0 },
             { name: "TBD (Slot 9)", titles: 0 },
@@ -306,7 +306,14 @@
 
         function openModal(name, titles) {
             document.getElementById('modalName').innerText = name;
-            document.getElementById('modalTitles').innerText = titles > 0 ? titles : "None (Yet)";
+            // Handle display formatting based on title count
+            if (titles === 4) {
+                document.getElementById('modalTitles').innerText = "🏆 4 Times Champion";
+                document.getElementById('modalTitles').style.color = "var(--primary-neon)";
+            } else {
+                document.getElementById('modalTitles').innerText = "None (Yet)";
+                document.getElementById('modalTitles').style.color = "inherit";
+            }
             modal.style.display = "flex";
         }
 
