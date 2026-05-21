@@ -391,23 +391,23 @@
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0, 'WL')">Prabesh Ghimire</span></td>
-                        <td>2</td><td>1</td><td>0</td><td>1</td><td>4</td><td>5</td><td>-1</td><td class="pts-cell">3</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
                         <td><span class="player-link" onclick="triggerModal('Manees Paudel', 0, 'W')">Manees Paudel</span></td>
                         <td>1</td><td>1</td><td>0</td><td>0</td><td>4</td><td>2</td><td>+2</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
-                        <td>4</td>
+                        <td>3</td>
                         <td><span class="player-link" onclick="triggerModal('Manjil Crestha', 0, 'W')">Manjil Crestha</span></td>
                         <td>1</td><td>1</td><td>0</td><td>0</td><td>5</td><td>3</td><td>+2</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
+                        <td>4</td>
+                        <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0, 'WL')">Prabesh Ghimire</span></td>
+                        <td>2</td><td>1</td><td>0</td><td>1</td><td>4</td><td>5</td><td>-1</td><td class="pts-cell">3</td>
+                    </tr>
+                    <tr>
                         <td>5</td>
-                        <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0, 'W')">बसन्त तामाङ</span></td>
-                        <td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>2</td><td>+1</td><td class="pts-cell">3</td>
+                        <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0, 'LW')">बसन्त तामाङ</span></td>
+                        <td>2</td><td>1</td><td>0</td><td>1</td><td>5</td><td>6</td><td>-1</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>6</td>
@@ -416,8 +416,8 @@
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0, 'L')">Ganesh Nepali</span></td>
-                        <td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>-1</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0, '')">Ganesh Nepali</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>8</td>
@@ -426,18 +426,18 @@
                     </tr>
                     <tr>
                         <td>9</td>
+                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0, '')">Santosh Chhetri</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
                         <td><span class="player-link" onclick="triggerModal('Siv Sunar', 0, 'L')">Siv Sunar</span></td>
                         <td>1</td><td>0</td><td>0</td><td>1</td><td>3</td><td>5</td><td>-2</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
-                        <td>10</td>
+                        <td>11</td>
                         <td><span class="player-link" onclick="triggerModal('Binaya Shrestha', 0, 'LL')">Binaya Shrestha</span></td>
                         <td>2</td><td>0</td><td>0</td><td>2</td><td>1</td><td>5</td><td>-4</td><td class="pts-cell">0</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0, 'L')">Santosh Chhetri</span></td>
-                        <td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>-1</td><td class="pts-cell">0</td>
                     </tr>
                 </tbody>
             </table>
@@ -640,7 +640,7 @@
                 return;
             }
 
-            // Loop through form string characters (e.g. 'WW', 'LL', 'WL')
+            // Loop through form string characters
             let dotsHtml = '';
             for (let i = 0; i < 5; i++) {
                 if (i < formString.length) {
@@ -653,10 +653,10 @@
             }
             formContainer.innerHTML = dotsHtml;
 
-            // Generate contextual updates based on modern sequence strings
+            // Generate contextual updates based on latest match result
             const lastResult = formString[formString.length - 1];
             if (lastResult === 'W') {
-                statusField.innerText = `In excellent match form following a recent victory. total campaign wins: ${formString.split('W').length - 1}`;
+                statusField.innerText = `In excellent match form following a recent victory. Total campaign wins: ${formString.split('W').length - 1}`;
                 statusField.style.color = "var(--primary-neon)";
             } else {
                 statusField.innerText = "Suffered a setback in their recent fixture. Looking to make adjustments.";
