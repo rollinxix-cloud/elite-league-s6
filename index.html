@@ -108,7 +108,6 @@
             color: #fff;
         }
 
-        /* NEW COUNTDOWN STYLES */
         .countdown-container {
             background: rgba(255, 74, 74, 0.05);
             border: 1px solid rgba(255, 74, 74, 0.2);
@@ -443,23 +442,23 @@
                     </tr>
                     <tr>
                         <td>4</td>
+                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0, 'W')">Santosh Chhetri</span></td>
+                        <td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>+1</td><td class="pts-cell">3</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
                         <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0, 'WL')">Prabesh Ghimire</span></td>
                         <td>2</td><td>1</td><td>0</td><td>1</td><td>4</td><td>5</td><td>-1</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
-                        <td>5</td>
+                        <td>6</td>
                         <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0, 'LW')">बसन्त तामाङ</span></td>
                         <td>2</td><td>1</td><td>0</td><td>1</td><td>5</td><td>6</td><td>-1</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
-                        <td>6</td>
+                        <td>7</td>
                         <td><span class="player-link" onclick="triggerModal('Amir Aslami Magar', 0, 'WL')">Amir Aslami Magar</span></td>
                         <td>2</td><td>1</td><td>0</td><td>1</td><td>3</td><td>4</td><td>-1</td><td class="pts-cell">3</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0, '')">Ganesh Nepali</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>8</td>
@@ -468,8 +467,8 @@
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0, '')">Santosh Chhetri</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0, 'L')">Ganesh Nepali</span></td>
+                        <td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>-1</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>10</td>
@@ -547,13 +546,13 @@
                 </div>
 
                 <div class="match-row">
-                    <div class="team-home">Ganesh Nepali</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
+                    <div class="team-home" style="color: var(--text-dim);">Ganesh Nepali</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="1" style="color: var(--text-dim);">
                         <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
+                        <input type="text" class="score-input" value="2">
                     </div>
-                    <div class="team-away">Santosh Chhetri</div>
+                    <div class="team-away" style="font-weight: 800; color: var(--primary-neon);">Santosh Chhetri ⭐</div>
                 </div>
 
                 <div class="match-row">
@@ -717,8 +716,6 @@
             if (!timerElement) return;
 
             const now = new Date();
-            
-            // Set target target to tomorrow at 16:00:00 (4:00 PM) local time
             const target = new Date();
             target.setDate(now.getDate() + 1);
             target.setHours(16, 0, 0, 0);
@@ -736,14 +733,12 @@
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            // Format double digits
             const displayHours = hours < 10 ? '0' + hours : hours;
             const displayMinutes = minutes < 10 ? '0' + minutes : minutes;
             const displaySeconds = seconds < 10 ? '0' + seconds : seconds;
 
             timerElement.innerText = `${displayHours}:${displayMinutes}:${displaySeconds}`;
 
-            // Under 3 hours remaining triggers a high-alert structural pulsing effect
             if (hours < 3) {
                 timerElement.classList.add('urgent');
             } else {
@@ -751,7 +746,6 @@
             }
         }
 
-        // Run immediately and setup structural clock updates
         updateDeadlineTimer();
         setInterval(updateDeadlineTimer, 1000);
     </script>
