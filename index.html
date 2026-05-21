@@ -16,7 +16,6 @@
             --accent-blue: #0046ff;
             --table-border: rgba(255, 255, 255, 0.08);
             --transition: background-color 0.3s ease, color 0.3s ease;
-            --warning-red: #ff4a4a;
         }
 
         body.light-mode {
@@ -71,7 +70,7 @@
 
         header {
             text-align: center;
-            padding: 60px 20px 20px;
+            padding: 60px 20px 40px;
             text-transform: uppercase;
         }
 
@@ -313,6 +312,16 @@
 
         .score-input:focus { outline: none; }
 
+        .match-note {
+            grid-column: 1 / span 3;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #ff4a4a;
+            font-weight: 700;
+            margin-top: -4px;
+            padding-bottom: 6px;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -355,7 +364,7 @@
         <header>
             <div class="season-badge">Season 6</div>
             <h1 class="league-title">ELITE LEAGUE</h1>
-            <p style="color: var(--text-dim); margin-bottom: 20px;">Official eFootball Open Championship</p>
+            <p style="color: var(--text-dim);">Official eFootball Open Championship</p>
         </header>
 
         <div class="highlights-grid">
@@ -377,37 +386,37 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><span class="player-link" onclick="triggerModal('Prateek Khadka', 4, 'W')">Prateek Khadka</span></td>
-                        <td>1</td><td>1</td><td>0</td><td>0</td><td>4</td><td>1</td><td>+3</td><td class="pts-cell">3</td>
+                        <td><span class="player-link" onclick="triggerModal('Prateek Khadka', 4, 'WW')">Prateek Khadka</span></td>
+                        <td>2</td><td>2</td><td>0</td><td>0</td><td>9</td><td>2</td><td>+7</td><td class="pts-cell">6</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0, 'W')">बसन्त तामाङ</span></td>
-                        <td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>+1</td><td class="pts-cell">3</td>
+                        <td><span class="player-link" onclick="triggerModal('Manees Paudel', 0, 'W')">Manees Paudel</span></td>
+                        <td>1</td><td>1</td><td>0</td><td>0</td><td>4</td><td>2</td><td>+2</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0, 'W')">Santosh Chhetri</span></td>
-                        <td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>+1</td><td class="pts-cell">3</td>
+                        <td><span class="player-link" onclick="triggerModal('Manjil Crestha', 0, 'W')">Manjil Crestha</span></td>
+                        <td>1</td><td>1</td><td>0</td><td>0</td><td>5</td><td>3</td><td>+2</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td><span class="player-link" onclick="triggerModal('Manees Paudel', 0, '')">Manees Paudel</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0, 'WL')">Prabesh Ghimire</span></td>
+                        <td>2</td><td>1</td><td>0</td><td>1</td><td>4</td><td>5</td><td>-1</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td><span class="player-link" onclick="triggerModal('Manjil Crestha', 0, '')">Manjil Crestha</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0, 'LW')">बसन्त तामाङ</span></td>
+                        <td>2</td><td>1</td><td>0</td><td>1</td><td>5</td><td>6</td><td>-1</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0, '')">Prabesh Ghimire</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Amir Aslami Magar', 0, 'WL')">Amir Aslami Magar</span></td>
+                        <td>2</td><td>1</td><td>0</td><td>1</td><td>3</td><td>4</td><td>-1</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td><span class="player-link" onclick="triggerModal('Amir Aslami Magar', 0, '')">Amir Aslami Magar</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0, '')">Ganesh Nepali</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
@@ -417,18 +426,18 @@
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td><span class="player-link" onclick="triggerModal('Binaya Shrestha', 0, '')">Binaya Shrestha</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0, '')">Santosh Chhetri</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td><span class="player-link" onclick="triggerModal('Siv Sunar', 0, '')">Siv Sunar</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Siv Sunar', 0, 'L')">Siv Sunar</span></td>
+                        <td>1</td><td>0</td><td>0</td><td>1</td><td>3</td><td>5</td><td>-2</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>11</td>
-                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0, 'LL')">Ganesh Nepali</span></td>
-                        <td>2</td><td>0</td><td>0</td><td>2</td><td>2</td><td>6</td><td>-4</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Binaya Shrestha', 0, 'LL')">Binaya Shrestha</span></td>
+                        <td>2</td><td>0</td><td>0</td><td>2</td><td>1</td><td>5</td><td>-4</td><td class="pts-cell">0</td>
                     </tr>
                 </tbody>
             </table>
@@ -466,53 +475,53 @@
                 </div>
                 
                 <div class="match-row">
-                    <div class="team-home" style="font-weight: 800; color: var(--primary-neon);">बसन्त तामाङ ⭐</div>
+                    <div class="team-home" style="color: var(--text-dim);">बसन्त तामाङ</div>
                     <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="2" style="color: var(--text-dim);">
+                        <span>:</span>
+                        <input type="text" class="score-input" value="4">
+                    </div>
+                    <div class="team-away" style="font-weight: 800; color: var(--primary-neon);">Manees Paudel ⭐</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home" style="color: var(--text-dim);">Siv Sunar</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="3" style="color: var(--text-dim);">
+                        <span>:</span>
+                        <input type="text" class="score-input" value="5">
+                    </div>
+                    <div class="team-away" style="font-weight: 800; color: var(--primary-neon);">Manjil Crestha ⭐</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home" style="color: var(--text-dim);">Binaya Shrestha</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="1" style="color: var(--text-dim);">
+                        <span>:</span>
                         <input type="text" class="score-input" value="2">
+                    </div>
+                    <div class="team-away" style="font-weight: 800; color: var(--primary-neon);">Amir Aslami Magar ⭐</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home">Ganesh Nepali</div>
+                    <div class="score-box">
+                        <input type="text" class="score-input" placeholder="-">
+                        <span>:</span>
+                        <input type="text" class="score-input" placeholder="-">
+                    </div>
+                    <div class="team-away">Santosh Chhetri</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home" style="font-weight: 800; color: var(--primary-neon);">Prateek Khadka ⭐</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="5">
                         <span>:</span>
                         <input type="text" class="score-input" value="1" style="color: var(--text-dim);">
                     </div>
-                    <div class="team-away" style="color: var(--text-dim);">Ganesh Nepali</div>
-                </div>
-
-                <div class="match-row">
-                    <div class="team-home">Siv Sunar</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
-                        <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
-                    </div>
-                    <div class="team-away">Manjil Crestha</div>
-                </div>
-
-                <div class="match-row">
-                    <div class="team-home">Binaya Shrestha</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
-                        <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
-                    </div>
-                    <div class="team-away">Amir Aslami Magar</div>
-                </div>
-
-                <div class="match-row">
-                    <div class="team-home" style="font-weight: 800; color: var(--primary-neon);">Santosh Chhetri ⭐</div>
-                    <div class="score-box" style="border-color: var(--primary-neon);">
-                        <input type="text" class="score-input" value="2">
-                        <span>:</span>
-                        <input type="text" class="score-input" value="1" style="color: var(--text-dim);">
-                    </div>
-                    <div class="team-away" style="color: var(--text-dim);">Ganesh Nepali</div>
-                </div>
-
-                <div class="match-row">
-                    <div class="team-home">Prateek Khadka</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
-                        <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
-                    </div>
-                    <div class="team-away">Prabesh Ghimire</div>
+                    <div class="team-away" style="color: var(--text-dim);">Prabesh Ghimire</div>
                 </div>
             </div>
 
@@ -533,13 +542,13 @@
                 </div>
 
                 <div class="match-row">
-                    <div class="team-home">बसन्त तामाङ</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
+                    <div class="team-home" style="font-weight: 800; color: var(--primary-neon);">बसन्त तामाङ ⭐</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="3">
                         <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
+                        <input type="text" class="score-input" value="2" style="color: var(--text-dim);">
                     </div>
-                    <div class="team-away">Amir Aslami Magar</div>
+                    <div class="team-away" style="color: var(--text-dim);">Amir Aslami Magar</div>
                 </div>
 
                 <div class="match-row">
@@ -553,13 +562,14 @@
                 </div>
 
                 <div class="match-row">
-                    <div class="team-home">Binaya Shrestha</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
+                    <div class="team-home" style="color: var(--text-dim);">Binaya Shrestha</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="0" style="color: var(--text-dim);">
                         <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
+                        <input type="text" class="score-input" value="3">
                     </div>
-                    <div class="team-away">Prabesh Ghimire</div>
+                    <div class="team-away" style="font-weight: 800; color: var(--primary-neon);">Prabesh Ghimire ⭐</div>
+                    <div class="match-note">🔴 Binaya Shrestha (Red Card 42')</div>
                 </div>
 
                 <div class="match-row">
@@ -630,6 +640,7 @@
                 return;
             }
 
+            // Loop through form string characters
             let dotsHtml = '';
             for (let i = 0; i < 5; i++) {
                 if (i < formString.length) {
@@ -642,6 +653,7 @@
             }
             formContainer.innerHTML = dotsHtml;
 
+            // Generate contextual updates based on latest match result
             const lastResult = formString[formString.length - 1];
             if (lastResult === 'W') {
                 statusField.innerText = `In excellent match form following a recent victory. Total campaign wins: ${formString.split('W').length - 1}`;
