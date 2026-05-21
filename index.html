@@ -15,10 +15,10 @@
             --primary-neon: #d2ff00; /* eFootball Lime */
             --accent-blue: #0046ff;
             --table-border: rgba(255, 255, 255, 0.05);
-            --transition: all 0.3s ease;
+            --transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .light-mode {
+        body.light-mode {
             --bg-color: #f0f2f5;
             --card-bg: #ffffff;
             --text-main: #1a202c;
@@ -85,6 +85,12 @@
             -webkit-text-fill-color: transparent;
         }
 
+        body.light-mode .league-title {
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: var(--text-main);
+        }
+
         .season-badge {
             display: inline-block;
             background: var(--primary-neon);
@@ -95,6 +101,10 @@
             font-size: 1.2rem;
             transform: skewX(-15deg);
             margin-bottom: 20px;
+        }
+
+        body.light-mode .season-badge {
+            color: #fff;
         }
 
         .section-title {
@@ -166,16 +176,15 @@
         }
 
         .player-link:hover {
-            color: var(--text-main);
             text-decoration: underline;
         }
 
         .pts-cell { color: var(--primary-neon); font-size: 1.1rem; }
 
-        /* Match Rules Styling */
+        /* Regulations Banner */
         .rules-container {
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(13, 22, 45, 0.6) 100%);
-            border: 1px solid rgba(210, 255, 0, 0.15);
+            background: var(--card-bg);
+            border: 1px solid var(--table-border);
             border-left: 5px solid var(--primary-neon);
             border-radius: 8px;
             padding: 20px;
@@ -193,7 +202,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.15);
             padding: 10px 15px;
             border-radius: 6px;
             border: 1px solid var(--table-border);
@@ -212,7 +221,7 @@
             font-size: 1rem;
         }
 
-        /* Fixtures Grid System */
+        /* Fixtures Layout */
         .fixtures-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -233,7 +242,7 @@
             font-size: 1.2rem;
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid var(--table-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -255,7 +264,7 @@
             grid-template-columns: 1fr auto 1fr;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid var(--table-border);
         }
 
         .match-row:last-child { border-bottom: none; }
@@ -267,7 +276,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
             padding: 4px 8px;
             border-radius: 4px;
             border: 1px solid var(--table-border);
@@ -284,9 +293,9 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-        .score-input:focus { outline: none; background: rgba(255,255,255,0.05); }
+        .score-input:focus { outline: none; }
 
-        /* Modal */
+        /* Modal Overlay */
         .modal {
             display: none;
             position: fixed;
@@ -305,6 +314,7 @@
             width: 90%; max-width: 400px;
             text-align: center;
             position: relative;
+            color: var(--text-main);
         }
 
         .close {
@@ -346,12 +356,11 @@
                     </tr>
                 </thead>
                 <tbody id="leagueTableBody">
-                    <!-- Settled by Script -->
+                    <!-- Loaded dynamically via script -->
                 </tbody>
             </table>
         </div>
 
-        <!-- MATCH RULES AND CONDITIONS -->
         <h2 class="section-title">Tournament Regulations</h2>
         <div class="rules-container">
             <div class="rules-grid">
@@ -496,10 +505,10 @@
         </div>
     </div>
 
-    <!-- Player Modal -->
+    <!-- Player Modal Profile -->
     <div id="playerModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" id="modalCloseBtn">&times;</span>
             <h2 id="modalName" style="font-family: 'Orbitron'; color: var(--primary-neon); margin-bottom: 20px;">PLAYER</h2>
             <div style="text-align: left;">
                 <div style="display:flex; justify-content:space-between; padding: 12px 0; border-bottom: 1px solid var(--table-border);">
@@ -518,13 +527,13 @@
     </div>
 
     <script>
-        // Official 11 Player Lineup
-        const players = [
+        // Set up the exact 11 player configuration
+        const roster = [
             { name: "बसन्त तामाङ", titles: 0 },
             { name: "Siv Sunar", titles: 0 },
             { name: "Binaya Shrestha", titles: 0 },
             { name: "Ganesh Nepali", titles: 0 },
-            { name: "Prateek Khadka", titles: 4 },
+            { name: "Prateek Khadka", titles: 4 }, // 4-time champion
             { name: "Prabesh Ghimire", titles: 0 },
             { name: "Santosh Chhetri", titles: 0 },
             { name: "Amir Aslami Magar", titles: 0 },
@@ -533,31 +542,28 @@
             { name: "Subash Tamang", titles: 0 }
         ];
 
-        // Dark/Light Mode
+        // 1. Dark/Light Theme Switching Logic
         const themeBtn = document.getElementById('themeBtn');
-        themeBtn.addEventListener('click', () => {
+        themeBtn.addEventListener('click', function() {
             document.body.classList.toggle('light-mode');
-            themeBtn.innerText = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+            if (document.body.classList.contains('light-mode')) {
+                themeBtn.innerText = '🌙';
+            } else {
+                themeBtn.innerText = '☀️';
+            }
         });
 
-        // Table Generation
+        // 2. Dynamic Table Row Renderer
         const tableBody = document.getElementById('leagueTableBody');
-        players.forEach((player, index) => {
+        tableBody.innerHTML = ""; // Clear placeholders safely
+        
+        roster.forEach((player, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${index + 1}</td>
-                <td><span class="player-link" onclick="openModal('${player.name}', ${player.titles})">${player.name}</span></td>
-                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                <td class="pts-cell">0</td>
-            `;
-            tableBody.appendChild(row);
-        });
-
-        // Modal Logic
-        const modal = document.getElementById('playerModal');
-        const span = document.getElementsByClassName('close')[0];
-
-        function openModal(name, titles) {
-            document.getElementById('modalName').innerText = name;
-            if (titles === 4) {
-                document.getElementByI
+                <td>
+                    <span class="player-link" data-name="${player.name}" data-titles="${player.titles}">
+                        ${player.name}
+                    </span>
+                </td>
+                <td>0</td><td>0</td><td>
