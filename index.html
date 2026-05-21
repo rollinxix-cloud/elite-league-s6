@@ -97,6 +97,16 @@
             margin-bottom: 20px;
         }
 
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            border-left: 4px solid var(--primary-neon);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .highlights-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -162,20 +172,74 @@
 
         .pts-cell { color: var(--primary-neon); font-size: 1.1rem; }
 
-        .btn-register {
-            display: block;
-            width: fit-content;
-            margin: 50px auto;
-            background: var(--primary-neon);
-            color: #000;
-            padding: 18px 45px;
-            font-weight: 800;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 5px;
-            font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 0 20px rgba(210, 255, 0, 0.2);
+        /* Fixtures Styling */
+        .fixtures-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
+
+        .round-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--table-border);
+        }
+
+        .round-header {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-neon);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bye-badge {
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-dim);
+            padding: 2px 10px;
+            border-radius: 4px;
+        }
+
+        .match-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .match-row:last-child { border-bottom: none; }
+
+        .team-home { text-align: right; padding-right: 15px; }
+        .team-away { text-align: left; padding-left: 15px; }
+        
+        .score-box {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--table-border);
+        }
+
+        .score-input {
+            width: 30px;
+            background: transparent;
+            border: none;
+            color: var(--primary-neon);
+            font-weight: 700;
+            text-align: center;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .score-input:focus { outline: none; background: rgba(255,255,255,0.05); }
 
         /* Modal */
         .modal {
@@ -217,15 +281,16 @@
         <header>
             <div class="season-badge">Season 6</div>
             <h1 class="league-title">ELITE LEAGUE</h1>
-            <p style="color: var(--text-dim);">The Professional eFootball Open</p>
+            <p style="color: var(--text-dim);">Official eFootball Open Championship</p>
         </header>
 
         <div class="highlights-grid">
             <div class="highlight-card"><small>ENTRY FEE</small><p>₹200</p></div>
-            <div class="highlight-card"><small>MATCHES</small><p>9 PER PLAYER</p></div>
-            <div class="highlight-card"><small>PRIZE</small><p>BIG POOL</p></div>
+            <div class="highlight-card"><small>TOTAL PLAYERS</small><p>11 ROSTER</p></div>
+            <div class="highlight-card"><small>MATCHES</small><p>10 PER PLAYER</p></div>
         </div>
 
+        <h2 class="section-title">Standings Table</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -236,12 +301,70 @@
                     </tr>
                 </thead>
                 <tbody id="leagueTableBody">
-                    <!-- Data populated by Script -->
+                    <!-- Settled by Script -->
                 </tbody>
             </table>
         </div>
 
-        <a href="https://m.me/pesmatches5" target="_blank" class="btn-register">Register Now</a>
+        <h2 class="section-title">League Fixtures (Round 1)</h2>
+        <div class="fixtures-grid">
+            <div class="round-container">
+                <div class="round-header">
+                    <span>ROUND 1</span>
+                    <span class="bye-badge">🔄 BYE: Subash Tamang</span>
+                </div>
+                
+                <div class="match-row">
+                    <div class="team-home">बसन्त तामाङ</div>
+                    <div class="score-box">
+                        <input type="text" class="score-input" placeholder="-">
+                        <span>:</span>
+                        <input type="text" class="score-input" placeholder="-">
+                    </div>
+                    <div class="team-away">Manees Paudel</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home">Siv Sunar</div>
+                    <div class="score-box">
+                        <input type="text" class="score-input" placeholder="-">
+                        <span>:</span>
+                        <input type="text" class="score-input" placeholder="-">
+                    </div>
+                    <div class="team-away">Manjil Crestha</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home">Binaya Shrestha</div>
+                    <div class="score-box">
+                        <input type="text" class="score-input" placeholder="-">
+                        <span>:</span>
+                        <input type="text" class="score-input" placeholder="-">
+                    </div>
+                    <div class="team-away">Amir Aslami Magar</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home">Ganesh Nepali</div>
+                    <div class="score-box">
+                        <input type="text" class="score-input" placeholder="-">
+                        <span>:</span>
+                        <input type="text" class="score-input" placeholder="-">
+                    </div>
+                    <div class="team-away">Santosh Chhetri</div>
+                </div>
+
+                <div class="match-row">
+                    <div class="team-home">Prateek Khadka</div>
+                    <div class="score-box">
+                        <input type="text" class="score-input" placeholder="-">
+                        <span>:</span>
+                        <input type="text" class="score-input" placeholder="-">
+                    </div>
+                    <div class="team-away">Prabesh Ghimire</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Player Modal -->
@@ -266,18 +389,19 @@
     </div>
 
     <script>
-        // Player Data Array
+        // Official 11 Player Lineup
         const players = [
-            { name: "Basanta Tamang", titles: 0 },
-            { name: "Binaya Shrestha", titles: 0 },
+            { name: "बसन्त तामाङ", titles: 0 },
             { name: "Siv Sunar", titles: 0 },
-            { name: "Subash Tamang", titles: 0 },
+            { name: "Binaya Shrestha", titles: 0 },
+            { name: "Ganesh Nepali", titles: 0 },
             { name: "Prateek Khadka", titles: 4 },
+            { name: "Prabesh Ghimire", titles: 0 },
+            { name: "Santosh Chhetri", titles: 0 },
+            { name: "Amir Aslami Magar", titles: 0 },
+            { name: "Manjil Crestha", titles: 0 },
             { name: "Manees Paudel", titles: 0 },
-            { name: "Prabesh Gimire", titles: 0 },
-            { name: "TBD (Slot 8)", titles: 0 },
-            { name: "TBD (Slot 9)", titles: 0 },
-            { name: "TBD (Slot 10)", titles: 0 }
+            { name: "Subash Tamang", titles: 0 }
         ];
 
         // Dark/Light Mode
@@ -306,7 +430,6 @@
 
         function openModal(name, titles) {
             document.getElementById('modalName').innerText = name;
-            // Handle display formatting based on title count
             if (titles === 4) {
                 document.getElementById('modalTitles').innerText = "🏆 4 Times Champion";
                 document.getElementById('modalTitles').style.color = "var(--primary-neon)";
