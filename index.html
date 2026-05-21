@@ -199,7 +199,6 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-        /* Regulations Banner */
         .rules-container {
             background: var(--card-bg);
             border: 1px solid var(--table-border);
@@ -239,7 +238,6 @@
             font-size: 1rem;
         }
 
-        /* Fixtures Layout */
         .fixtures-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -283,6 +281,7 @@
             align-items: center;
             padding: 12px 0;
             border-bottom: 1px solid var(--table-border);
+            position: relative;
         }
 
         .match-row:last-child { border-bottom: none; }
@@ -313,7 +312,16 @@
 
         .score-input:focus { outline: none; }
 
-        /* Modal Overlay */
+        .match-note {
+            grid-column: 1 / span 3;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #ff4a4a;
+            font-weight: 700;
+            margin-top: -4px;
+            padding-bottom: 6px;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -341,9 +349,11 @@
         }
 
         .form-dot {
-            height: 12px; width: 12px; background: #555;
-            display: inline-block; border-radius: 50%; margin: 0 3px;
+            height: 12px; width: 12px; border-radius: 50%; margin: 0 3px; display: inline-block;
         }
+        .form-w { background-color: #d2ff00; }
+        .form-l { background-color: #ff4a4a; }
+        .form-empty { background-color: #555; }
     </style>
 </head>
 <body>
@@ -376,58 +386,58 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0)">बसन्त तामाङ</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0, 'W')">Prabesh Ghimire</span></td>
+                        <td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>0</td><td>+3</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><span class="player-link" onclick="triggerModal('Siv Sunar', 0)">Siv Sunar</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Manjil Crestha', 0, 'W')">Manjil Crestha</span></td>
+                        <td>1</td><td>1</td><td>0</td><td>0</td><td>5</td><td>3</td><td>+2</td><td class="pts-cell">3</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td><span class="player-link" onclick="triggerModal('Binaya Shrestha', 0)">Binaya Shrestha</span></td>
+                        <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0, '')">बसन्त तामाङ</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0)">Ganesh Nepali</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0, '')">Ganesh Nepali</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td><span class="player-link" onclick="triggerModal('Prateek Khadka', 4)">Prateek Khadka</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Prateek Khadka', 4, '')">Prateek Khadka</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0)">Prabesh Ghimire</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0, '')">Santosh Chhetri</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0)">Santosh Chhetri</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Amir Aslami Magar', 0, '')">Amir Aslami Magar</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td><span class="player-link" onclick="triggerModal('Amir Aslami Magar', 0)">Amir Aslami Magar</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Manees Paudel', 0, '')">Manees Paudel</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td><span class="player-link" onclick="triggerModal('Manjil Crestha', 0)">Manjil Crestha</span></td>
+                        <td><span class="player-link" onclick="triggerModal('Subash Tamang', 0, '')">Subash Tamang</span></td>
                         <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td><span class="player-link" onclick="triggerModal('Manees Paudel', 0)">Manees Paudel</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Siv Sunar', 0, 'L')">Siv Sunar</span></td>
+                        <td>1</td><td>0</td><td>0</td><td>1</td><td>3</td><td>5</td><td>-2</td><td class="pts-cell">0</td>
                     </tr>
                     <tr>
                         <td>11</td>
-                        <td><span class="player-link" onclick="triggerModal('Subash Tamang', 0)">Subash Tamang</span></td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                        <td><span class="player-link" onclick="triggerModal('Binaya Shrestha', 0, 'L')">Binaya Shrestha</span></td>
+                        <td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>-3</td><td class="pts-cell">0</td>
                     </tr>
                 </tbody>
             </table>
@@ -467,21 +477,21 @@
                 <div class="match-row">
                     <div class="team-home">बसन्त तामाङ</div>
                     <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
+                        <input type="text" class="score-input" placeholder="-" value="">
                         <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
+                        <input type="text" class="score-input" placeholder="-" value="">
                     </div>
                     <div class="team-away">Manees Paudel</div>
                 </div>
 
                 <div class="match-row">
-                    <div class="team-home">Siv Sunar</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
+                    <div class="team-home" style="color: var(--text-dim);">Siv Sunar</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="3" style="color: var(--text-dim);">
                         <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
+                        <input type="text" class="score-input" value="5">
                     </div>
-                    <div class="team-away">Manjil Crestha</div>
+                    <div class="team-away" style="font-weight: 800; color: var(--primary-neon);">Manjil Crestha ⭐</div>
                 </div>
 
                 <div class="match-row">
@@ -552,13 +562,14 @@
                 </div>
 
                 <div class="match-row">
-                    <div class="team-home">Binaya Shrestha</div>
-                    <div class="score-box">
-                        <input type="text" class="score-input" placeholder="-">
+                    <div class="team-home" style="color: var(--text-dim);">Binaya Shrestha</div>
+                    <div class="score-box" style="border-color: var(--primary-neon);">
+                        <input type="text" class="score-input" value="0" style="color: var(--text-dim);">
                         <span>:</span>
-                        <input type="text" class="score-input" placeholder="-">
+                        <input type="text" class="score-input" value="3">
                     </div>
-                    <div class="team-away">Prabesh Ghimire</div>
+                    <div class="team-away" style="font-weight: 800; color: var(--primary-neon);">Prabesh Ghimire ⭐</div>
+                    <div class="match-note">🔴 Binaya Shrestha (Red Card 42')</div>
                 </div>
 
                 <div class="match-row">
@@ -586,38 +597,31 @@
                 </div>
                 <div style="display:flex; justify-content:space-between; padding: 12px 0; border-bottom: 1px solid var(--table-border);">
                     <span>Current Form:</span>
-                    <div>
-                        <span class="form-dot" style="background-color: #d2ff00;"></span>
-                        <span class="form-dot" style="background-color: #d2ff00;"></span>
-                        <span class="form-dot" style="background-color: #d2ff00;"></span>
-                        <span class="form-dot" style="background-color: #d2ff00;"></span>
-                        <span class="form-dot" style="background-color: #d2ff00;"></span>
-                    </div>
+                    <div id="formContainer">
+                        </div>
                 </div>
-                <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.9rem;">No matches recorded for Season 6 yet.</p>
+                <p id="modalMatchStatus" style="margin-top: 20px; color: var(--text-dim); font-size: 0.9rem;">No matches recorded.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // 1. Fully Bulletproof Light/Dark Mode Toggle Function
+        // Light/Dark Toggle Configuration
         const themeBtn = document.getElementById('themeBtn');
         themeBtn.addEventListener('click', function() {
             document.body.classList.toggle('light-mode');
-            if (document.body.classList.contains('light-mode')) {
-                themeBtn.innerText = '🌙';
-            } else {
-                themeBtn.innerText = '☀️';
-            }
+            themeBtn.innerText = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
         });
 
-        // 2. Direct Window-Level Function to handle clicks safely instantly
         const modal = document.getElementById('playerModal');
         const closeBtn = document.getElementById('modalCloseBtn');
 
-        function triggerModal(name, titles) {
+        // Dynamic Modal Form and Statistics Injector
+        function triggerModal(name, titles, primaryFormResult) {
             document.getElementById('modalName').innerText = name;
             const titlesField = document.getElementById('modalTitles');
+            const formContainer = document.getElementById('formContainer');
+            const statusField = document.getElementById('modalMatchStatus');
             
             if (parseInt(titles, 10) === 4) {
                 titlesField.innerText = "🏆 4 Times Champion";
@@ -626,19 +630,29 @@
                 titlesField.innerText = "None (Yet)";
                 titlesField.style.color = "inherit";
             }
+
+            // Build dynamic operational in-game form indicators
+            formContainer.innerHTML = '';
+            if (primaryFormResult === 'W') {
+                formContainer.innerHTML = '<span class="form-dot form-w"></span>' + '<span class="form-dot form-empty"></span>'.repeat(4);
+                statusField.innerText = "Active campaign started with a solid victory.";
+                statusField.style.color = "var(--primary-neon)";
+            } else if (primaryFormResult === 'L') {
+                formContainer.innerHTML = '<span class="form-dot form-l"></span>' + '<span class="form-dot form-empty"></span>'.repeat(4);
+                statusField.innerText = "Defeat registered. Looking to bounce back next matchday.";
+                statusField.style.color = "#ff4a4a";
+            } else {
+                formContainer.innerHTML = '<span class="form-dot form-empty"></span>'.repeat(5);
+                statusField.innerText = "No matches recorded for Season 6 yet.";
+                statusField.style.color = "var(--text-dim)";
+            }
             
             modal.style.display = "flex";
         }
 
-        // Close functions
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        };
-
+        closeBtn.onclick = function() { modal.style.display = "none"; };
         window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
+            if (event.target === modal) { modal.style.display = "none"; }
         };
     </script>
 </body>
