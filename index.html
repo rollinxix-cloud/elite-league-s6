@@ -14,7 +14,7 @@
             --text-dim: #a0aec0;
             --primary-neon: #d2ff00; /* eFootball Lime */
             --accent-blue: #0046ff;
-            --table-border: rgba(255, 255, 255, 0.05);
+            --table-border: rgba(255, 255, 255, 0.08);
             --transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -138,11 +138,13 @@
             color: var(--primary-neon);
         }
 
+        /* Fixed High-Contrast Standings Table Styles */
         .table-container {
             background: var(--card-bg);
             border-radius: 12px;
             overflow-x: auto;
             border: 1px solid var(--table-border);
+            margin-bottom: 30px;
         }
 
         table {
@@ -152,19 +154,30 @@
         }
 
         th {
-            background: rgba(0,0,0,0.1);
-            padding: 20px 15px;
+            background: rgba(0, 0, 0, 0.4); /* Darker backdrop to separate headers from lime under-glow */
+            padding: 18px 15px;
             text-align: left;
-            color: var(--text-dim);
-            font-size: 0.8rem;
+            color: #ffffff; /* Bright white headers */
+            font-size: 0.85rem;
+            font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
-            border-bottom: 2px solid var(--primary-neon);
+            border-bottom: 3px solid var(--primary-neon);
         }
 
         td {
             padding: 15px;
             border-bottom: 1px solid var(--table-border);
+            color: var(--text-main);
             font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02); /* Slight row highlight */
+        }
+
+        body.light-mode tr:hover td {
+            background: rgba(0, 0, 0, 0.02);
         }
 
         .player-link {
@@ -172,14 +185,20 @@
             cursor: pointer;
             text-decoration: none;
             font-weight: 700;
-            transition: 0.2s;
+            display: inline-block;
+            transition: color 0.2s ease;
         }
 
         .player-link:hover {
             text-decoration: underline;
+            opacity: 0.9;
         }
 
-        .pts-cell { color: var(--primary-neon); font-size: 1.1rem; }
+        .pts-cell { 
+            color: var(--primary-neon); 
+            font-size: 1.1rem; 
+            font-family: 'Orbitron', sans-serif;
+        }
 
         /* Regulations Banner */
         .rules-container {
@@ -323,8 +342,8 @@
         }
 
         .form-dot {
-            height: 12px; width: 12px; background: #333;
-            display: inline-block; border-radius: 50%; margin: 0 2px;
+            height: 12px; width: 12px; background: #555;
+            display: inline-block; border-radius: 50%; margin: 0 3px;
         }
     </style>
 </head>
@@ -356,8 +375,7 @@
                     </tr>
                 </thead>
                 <tbody id="leagueTableBody">
-                    <!-- Loaded dynamically via script -->
-                </tbody>
+                    </tbody>
             </table>
         </div>
 
@@ -386,7 +404,6 @@
         <h2 class="section-title">Matchday Fixtures</h2>
         <div class="fixtures-grid">
             
-            <!-- MATCHDAY 1 -->
             <div class="round-container">
                 <div class="round-header">
                     <span>MATCHDAY 1</span>
@@ -444,7 +461,6 @@
                 </div>
             </div>
 
-            <!-- MATCHDAY 2 -->
             <div class="round-container">
                 <div class="round-header">
                     <span>MATCHDAY 2</span>
@@ -505,7 +521,6 @@
         </div>
     </div>
 
-    <!-- Player Modal Profile -->
     <div id="playerModal" class="modal">
         <div class="modal-content">
             <span class="close" id="modalCloseBtn">&times;</span>
@@ -518,7 +533,11 @@
                 <div style="display:flex; justify-content:space-between; padding: 12px 0; border-bottom: 1px solid var(--table-border);">
                     <span>Current Form:</span>
                     <div>
-                        <span class="form-dot"></span><span class="form-dot"></span><span class="form-dot"></span><span class="form-dot"></span><span class="form-dot"></span>
+                        <span class="form-dot" style="background-color: #d2ff00;"></span>
+                        <span class="form-dot" style="background-color: #d2ff00;"></span>
+                        <span class="form-dot" style="background-color: #d2ff00;"></span>
+                        <span class="form-dot" style="background-color: #d2ff00;"></span>
+                        <span class="form-dot" style="background-color: #d2ff00;"></span>
                     </div>
                 </div>
                 <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.9rem;">No matches recorded for Season 6 yet.</p>
@@ -527,7 +546,7 @@
     </div>
 
     <script>
-        // Set up the exact 11 player configuration
+        // Official 11-Player Configuration
         const roster = [
             { name: "बसन्त तामाङ", titles: 0 },
             { name: "Siv Sunar", titles: 0 },
@@ -542,28 +561,8 @@
             { name: "Subash Tamang", titles: 0 }
         ];
 
-        // 1. Dark/Light Theme Switching Logic
-        const themeBtn = document.getElementById('themeBtn');
-        themeBtn.addEventListener('click', function() {
-            document.body.classList.toggle('light-mode');
-            if (document.body.classList.contains('light-mode')) {
-                themeBtn.innerText = '🌙';
-            } else {
-                themeBtn.innerText = '☀️';
-            }
-        });
-
-        // 2. Dynamic Table Row Renderer
-        const tableBody = document.getElementById('leagueTableBody');
-        tableBody.innerHTML = ""; // Clear placeholders safely
-        
-        roster.forEach((player, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>
-                    <span class="player-link" data-name="${player.name}" data-titles="${player.titles}">
-                        ${player.name}
-                    </span>
-                </td>
-                <td>0</td><td>0</td><td>
+        // Ensure everything fires seamlessly when DOM finishes parsing
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Theme Toggle Hook
+            const themeBtn = document.getElementById('themeBtn');
