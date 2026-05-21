@@ -138,7 +138,6 @@
             color: var(--primary-neon);
         }
 
-        /* Fixed High-Contrast Standings Table Styles */
         .table-container {
             background: var(--card-bg);
             border-radius: 12px;
@@ -154,10 +153,10 @@
         }
 
         th {
-            background: rgba(0, 0, 0, 0.4); /* Darker backdrop to separate headers from lime under-glow */
+            background: rgba(0, 0, 0, 0.4);
             padding: 18px 15px;
             text-align: left;
-            color: #ffffff; /* Bright white headers */
+            color: #ffffff;
             font-size: 0.85rem;
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
@@ -173,7 +172,7 @@
         }
 
         tr:hover td {
-            background: rgba(255, 255, 255, 0.02); /* Slight row highlight */
+            background: rgba(255, 255, 255, 0.02);
         }
 
         body.light-mode tr:hover td {
@@ -186,12 +185,12 @@
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
-            transition: color 0.2s ease;
+            transition: transform 0.1s ease;
         }
 
         .player-link:hover {
             text-decoration: underline;
-            opacity: 0.9;
+            transform: scale(1.03);
         }
 
         .pts-cell { 
@@ -350,7 +349,7 @@
 <body>
 
     <div class="container">
-        <button class="theme-toggle" id="themeBtn">🌓</button>
+        <button class="theme-toggle" id="themeBtn">☀️</button>
 
         <header>
             <div class="season-badge">Season 6</div>
@@ -374,8 +373,63 @@
                         <th>P</th><th>W</th><th>D</th><th>L</th><th>GS</th><th>GC</th><th>GD</th><th>PTS</th>
                     </tr>
                 </thead>
-                <tbody id="leagueTableBody">
-                    </tbody>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="player-link" onclick="triggerModal('बसन्त तामाङ', 0)">बसन्त तामाङ</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="player-link" onclick="triggerModal('Siv Sunar', 0)">Siv Sunar</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="player-link" onclick="triggerModal('Binaya Shrestha', 0)">Binaya Shrestha</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="player-link" onclick="triggerModal('Ganesh Nepali', 0)">Ganesh Nepali</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="player-link" onclick="triggerModal('Prateek Khadka', 4)">Prateek Khadka</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="player-link" onclick="triggerModal('Prabesh Ghimire', 0)">Prabesh Ghimire</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="player-link" onclick="triggerModal('Santosh Chhetri', 0)">Santosh Chhetri</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="player-link" onclick="triggerModal('Amir Aslami Magar', 0)">Amir Aslami Magar</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><span class="player-link" onclick="triggerModal('Manjil Crestha', 0)">Manjil Crestha</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><span class="player-link" onclick="triggerModal('Manees Paudel', 0)">Manees Paudel</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><span class="player-link" onclick="triggerModal('Subash Tamang', 0)">Subash Tamang</span></td>
+                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
@@ -546,23 +600,46 @@
     </div>
 
     <script>
-        // Official 11-Player Configuration
-        const roster = [
-            { name: "बसन्त तामाङ", titles: 0 },
-            { name: "Siv Sunar", titles: 0 },
-            { name: "Binaya Shrestha", titles: 0 },
-            { name: "Ganesh Nepali", titles: 0 },
-            { name: "Prateek Khadka", titles: 4 }, // 4-time champion
-            { name: "Prabesh Ghimire", titles: 0 },
-            { name: "Santosh Chhetri", titles: 0 },
-            { name: "Amir Aslami Magar", titles: 0 },
-            { name: "Manjil Crestha", titles: 0 },
-            { name: "Manees Paudel", titles: 0 },
-            { name: "Subash Tamang", titles: 0 }
-        ];
+        // 1. Fully Bulletproof Light/Dark Mode Toggle Function
+        const themeBtn = document.getElementById('themeBtn');
+        themeBtn.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                themeBtn.innerText = '🌙';
+            } else {
+                themeBtn.innerText = '☀️';
+            }
+        });
 
-        // Ensure everything fires seamlessly when DOM finishes parsing
-        document.addEventListener("DOMContentLoaded", function() {
+        // 2. Direct Window-Level Function to handle clicks safely instantly
+        const modal = document.getElementById('playerModal');
+        const closeBtn = document.getElementById('modalCloseBtn');
+
+        function triggerModal(name, titles) {
+            document.getElementById('modalName').innerText = name;
+            const titlesField = document.getElementById('modalTitles');
             
-            // 1. Theme Toggle Hook
-            const themeBtn = document.getElementById('themeBtn');
+            if (parseInt(titles, 10) === 4) {
+                titlesField.innerText = "🏆 4 Times Champion";
+                titlesField.style.color = "var(--primary-neon)";
+            } else {
+                titlesField.innerText = "None (Yet)";
+                titlesField.style.color = "inherit";
+            }
+            
+            modal.style.display = "flex";
+        }
+
+        // Close functions
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+</html>
